@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\Tag;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,5 +21,10 @@ class DatabaseSeeder extends Seeder
         Article::factory(20)->create();
         Comment::factory(50)->create();
 
+        $tags = Tag::factory(10)->create();
+        foreach($tags as $tag) {
+            $articles = Article::inRandomOrder()->take(random_int(0,4))->get();
+            $tag->articles()->attach($articles);
+        }
     }
 }

@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->string('author')->nullable();
+            $table->foreignId('author_id');
             $table->boolean('is_public')->default(false);
             $table->timestamps();
         });

@@ -18,8 +18,8 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'content' => $this->faker->paragraph(3, true),
-            'author' => $this->faker->name,
+            'content' => $this->faker->paragraph(10, true),
+            'author_id' => $this->faker->numberBetween(1, 10),
             'is_public' => $this->faker->boolean(80),
         ];
     }

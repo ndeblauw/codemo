@@ -17,8 +17,8 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence,
-            'content' => $this->faker->paragraph(10, true),
+            'title' => $this->faker->realTextBetween(20, 50, 1),
+            'content' => $this->faker->realTextBetween(500, 800, 2),
             'author_id' => $this->faker->numberBetween(1, 10),
             'is_public' => $this->faker->boolean(80),
         ];

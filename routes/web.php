@@ -8,6 +8,9 @@ Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('welcome')
 Route::get('/articles', [\App\Http\Controllers\ArticleController::class, 'index']);
 Route::get('/articles/{id}', [\App\Http\Controllers\ArticleController::class, 'show']);
 
+Route::get('/authors', [\App\Http\Controllers\AuthorController::class, 'index']);
+Route::get('/authors/{id}', [\App\Http\Controllers\AuthorController::class, 'show']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

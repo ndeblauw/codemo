@@ -21,6 +21,13 @@ class SiteLayoutHeader extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.site-layout-header');
+        $menu = [
+            'Articles' => '/articles',
+            'Authors' => '/authors',
+            'Contact us' => '/contact-us',
+        ];
+
+
+        return view('components.site-layout-header', compact('menu'));
     }
 }

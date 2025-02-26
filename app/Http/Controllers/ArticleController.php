@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    // function for the overview: index
     public function index()
     {
         $articles = \App\Models\Article::all();

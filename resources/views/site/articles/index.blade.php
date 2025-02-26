@@ -1,9 +1,9 @@
-<h1>Overview of the articles</h1>
 <x-site-layout>
+    <h1 class="font-bold text-4xl">Overview of the articles</h1>
 
-<ul>
-    @foreach($articles as $article)
-        <li><a href="/articles/{{$article->id}}">{{ $article->title }}</a></li>
-    @endforeach
-</ul>
+    <ul class="list-disc pl-4">
+        @foreach($articles as $article)
+            <li><a class="underline" href="/articles/{{$article->id}}">{{ $article->title }}</a></li>
+        @endforeach
+    </ul>
 </x-site-layout>

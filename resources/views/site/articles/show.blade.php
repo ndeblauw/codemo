@@ -1,7 +1,7 @@
-<h1>{{$article->title}}</h1>
 <x-site-layout>
+    <h1 class="text-4xl font-bold">{{$article->title}}</h1>
 
-<p>
-    {{$article->content}}
-</p>
+    <p class="mt-4">
+        {{$article->content}}
+    </p>
 </x-site-layout>

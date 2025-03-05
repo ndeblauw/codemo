@@ -15,6 +15,8 @@ Route::get('/authors/{id}', [\App\Http\Controllers\AuthorController::class, 'sho
 // Logged in page of my application
 Route::get('admin/articles/create', [\App\Http\Controllers\Admin\ArticleController::class, 'create']);
 Route::post('admin/articles', [\App\Http\Controllers\Admin\ArticleController::class, 'store']);
+Route::get('admin/articles/{id}/edit', [\App\Http\Controllers\Admin\ArticleController::class, 'edit']);
+Route::put('admin/articles/{id}', [\App\Http\Controllers\Admin\ArticleController::class, 'update']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

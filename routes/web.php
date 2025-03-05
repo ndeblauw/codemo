@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+// Public pages of my application
 Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('welcome');
 
 Route::get('/articles', [\App\Http\Controllers\ArticleController::class, 'index']);
@@ -11,6 +12,9 @@ Route::get('/articles/{id}', [\App\Http\Controllers\ArticleController::class, 's
 Route::get('/authors', [\App\Http\Controllers\AuthorController::class, 'index']);
 Route::get('/authors/{id}', [\App\Http\Controllers\AuthorController::class, 'show']);
 
+// Logged in page of my application
+Route::get('admin/articles/create', [\App\Http\Controllers\Admin\ArticleController::class, 'create']);
+Route::post('admin/articles', [\App\Http\Controllers\Admin\ArticleController::class, 'store']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

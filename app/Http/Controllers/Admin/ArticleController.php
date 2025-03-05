@@ -14,6 +14,11 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
+        // if this is not ok, return to form
+        $request->validate([
+            'title' => ['required', 'string', 'min:10', 'max:255'],
+            'content' => ['required'],
+        ]);
 
         $article = Article::create([
             'title' => $request->title,
@@ -34,6 +39,11 @@ class ArticleController extends Controller
 
     public function update(Request $request, int $id)
     {
+        $request->validate([
+            'title' => ['required', 'string', 'min:10', 'max:255'],
+            'content' => ['required'],
+        ]);
+
         $article = Article::find($id);
 
         $article->update([

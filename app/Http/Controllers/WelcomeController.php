@@ -8,8 +8,6 @@ class WelcomeController extends Controller
 {
     public function __invoke(Request $request)
     {
-        dd
-
         // data loading here
         return view('welcome');
     }

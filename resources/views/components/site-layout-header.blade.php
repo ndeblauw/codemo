@@ -6,6 +6,17 @@
                 <li class="hover:font-bold"><a href="{{$url}}">{{$label}}</a></li>
             @endforeach
         </ul>
-        <div>login</div>
+        @guest()
+        <div>
+            <a href="/login">login</a> | <a href="/register">register</a>
+        </div>
+        @endguest
+        @auth()
+            <div>
+                <a href="/admin/articles">manage articles</a>
+            </div>
+
+            <span> {{ auth()->user()->name }}</span>
+        @endauth
     </div>
 </header>

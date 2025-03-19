@@ -13,12 +13,14 @@ Route::get('/authors', [\App\Http\Controllers\AuthorController::class, 'index'])
 Route::get('/authors/{id}', [\App\Http\Controllers\AuthorController::class, 'show']);
 
 // Logged in page of my application
-Route::get('admin/articles', [\App\Http\Controllers\Admin\ArticleController::class, 'index']);
-Route::get('admin/articles/create', [\App\Http\Controllers\Admin\ArticleController::class, 'create']);
-Route::post('admin/articles', [\App\Http\Controllers\Admin\ArticleController::class, 'store']);
-Route::get('admin/articles/{id}/edit', [\App\Http\Controllers\Admin\ArticleController::class, 'edit']);
-Route::put('admin/articles/{id}', [\App\Http\Controllers\Admin\ArticleController::class, 'update']);
-Route::delete('admin/articles/{id}', [\App\Http\Controllers\Admin\ArticleController::class, 'destroy']);
+Route::middleware('auth')->group( function() {
+    Route::get('admin/articles', [\App\Http\Controllers\Admin\ArticleController::class, 'index']);
+    Route::get('admin/articles/create', [\App\Http\Controllers\Admin\ArticleController::class, 'create']);
+    Route::post('admin/articles', [\App\Http\Controllers\Admin\ArticleController::class, 'store']);
+    Route::get('admin/articles/{id}/edit', [\App\Http\Controllers\Admin\ArticleController::class, 'edit']);
+    Route::put('admin/articles/{id}', [\App\Http\Controllers\Admin\ArticleController::class, 'update']);
+    Route::delete('admin/articles/{id}', [\App\Http\Controllers\Admin\ArticleController::class, 'destroy']);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

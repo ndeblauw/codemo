@@ -10,7 +10,9 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::all();
+        $articles = (auth()->user()->is_admin)
+            ? Article::get()
+            : Article::where('author_id', auth()->user()->id)->get();
 
         return view('admin.articles.index', compact('articles'));
     }
@@ -31,7 +33,7 @@ class ArticleController extends Controller
         $article = Article::create([
             'title' => $request->title,
             'content' => $request->content,
-            'author_id' => 1,
+            'author_id' => auth()->user()->id,
             'is_public' => 1,
         ]);
 

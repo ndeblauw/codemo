@@ -20,6 +20,8 @@ Route::middleware('auth')->group( function() {
     Route::get('admin/articles/{id}/edit', [\App\Http\Controllers\Admin\ArticleController::class, 'edit']);
     Route::put('admin/articles/{id}', [\App\Http\Controllers\Admin\ArticleController::class, 'update']);
     Route::delete('admin/articles/{id}', [\App\Http\Controllers\Admin\ArticleController::class, 'destroy']);
+
+    Route::get('admin/tags', [\App\Http\Controllers\Admin\TagController::class, 'index']);
 });
 
 Route::get('/dashboard', function () {

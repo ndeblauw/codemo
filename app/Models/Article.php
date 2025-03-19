@@ -26,4 +26,18 @@ class Article extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+
+    public function canBeChanged(): bool
+    {
+        if (auth()->user()->is_admin) {
+            return true;
+        }
+
+        if($this->author_id == auth()->user()->id) {
+            return true;
+        }
+
+        return false;
+    }
 }

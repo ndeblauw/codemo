@@ -44,6 +44,10 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
 
+        if ( ! $article->canBeChanged() ) {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('admin.articles.edit', compact('article'));
     }
 
@@ -56,6 +60,10 @@ class ArticleController extends Controller
 
         $article = Article::find($id);
 
+        if ( ! $article->canBeChanged() ) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $article->update([
             'title' => $request->title,
             'content' => $request->content,
@@ -67,6 +75,10 @@ class ArticleController extends Controller
     public function destroy(int $id)
     {
         $article = Article::find($id);
+
+        if ( ! $article->canBeChanged() ) {
+            abort(403, 'Unauthorized action.');
+        }
 
         $article->delete();
 

@@ -21,7 +21,7 @@ Route::middleware('auth')->group( function() {
     Route::put('admin/articles/{id}', [\App\Http\Controllers\Admin\ArticleController::class, 'update']);
     Route::delete('admin/articles/{id}', [\App\Http\Controllers\Admin\ArticleController::class, 'destroy']);
 
-    Route::get('admin/tags', [\App\Http\Controllers\Admin\TagController::class, 'index']);
+    Route::get('admin/tags', [\App\Http\Controllers\Admin\TagController::class, 'index'])->middleware(\App\Http\Middleware\IsAdmin::class);
 });
 
 Route::get('/dashboard', function () {

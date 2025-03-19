@@ -14,6 +14,9 @@
         @auth()
             <div>
                 <a href="/admin/articles">manage articles</a>
+                @if(auth()->user()->is_admin)
+                    | <a href="/admin/tags">manage tags</a>
+                @endif
             </div>
 
             <span> {{ auth()->user()->name }}</span>

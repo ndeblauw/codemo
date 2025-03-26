@@ -8,7 +8,8 @@ class WelcomeController extends Controller
 {
     public function __invoke(Request $request)
     {
-        // data loading here
-        return view('welcome');
+        $latest_articles = \App\Models\Article::latest()->take(5)->get();
+
+        return view('welcome', compact('latest_articles'));
     }
 }

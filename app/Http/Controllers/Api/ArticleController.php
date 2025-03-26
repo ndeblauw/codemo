@@ -32,7 +32,7 @@ class ArticleController extends Controller
         $article = Article::create([
             'title' => $request->title,
             'content' => $request->content,
-            'author_id' => 1, // make dynamic again TODO
+            'author_id' => auth()->user()->id,
             'is_public' => 1,
         ]);
 
@@ -49,7 +49,9 @@ class ArticleController extends Controller
             'content' => ['required'],
         ]);
 
-        // Business logic check based on logged in user retrieved from the token
+        if ( ! $article->canBeChanged() ) {
+            abort(403, 'Unauthorized action.');
+        }
 
         $article->update([
             'title' => $request->title,
@@ -63,7 +65,9 @@ class ArticleController extends Controller
 
     public function destroy(Article $article)
     {
-        // Business logic check based on logged in user retrieved from the token
+        if ( ! $article->canBeChanged() ) {
+            abort(403, 'Unauthorized action.');
+        }
 
         $article->delete();
 

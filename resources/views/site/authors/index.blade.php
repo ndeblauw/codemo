@@ -5,7 +5,7 @@
         @foreach($authors as $author)
             <li>
                 <a class="underline" href="/authors/{{$author->id}}">{{ $author->name }}</a>
-                ({{$author->articles->count()}} articles)
+                ({{$author->articles_count}} articles)
             </li>
         @endforeach
     </ul>

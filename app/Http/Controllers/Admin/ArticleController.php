@@ -71,6 +71,14 @@ class ArticleController extends Controller
             'content' => $request->content,
         ]);
 
+        // Some really slow complex stuff that needs to be done
+        // - Sending a mail to the editors
+        // - Regenerating the images and reziing them and watermarking them
+        // - Send out a push notification
+        dump('Doing some slow stuff for article: ' . $article->id);
+        sleep(5);
+        dump('Done with slow stuff for article: ' . $article->id);
+
         cache()->forget('latest_articles');
 
         return redirect('/admin/articles');

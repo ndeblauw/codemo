@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SlowArticleStuffToDo;
 use App\Models\Article;
 use Illuminate\Http\Request;
 
@@ -71,13 +72,7 @@ class ArticleController extends Controller
             'content' => $request->content,
         ]);
 
-        // Some really slow complex stuff that needs to be done
-        // - Sending a mail to the editors
-        // - Regenerating the images and reziing them and watermarking them
-        // - Send out a push notification
-        dump('Doing some slow stuff for article: ' . $article->id);
-        sleep(5);
-        dump('Done with slow stuff for article: ' . $article->id);
+        SlowArticleStuffToDo::dispatch($article);
 
         cache()->forget('latest_articles');
 

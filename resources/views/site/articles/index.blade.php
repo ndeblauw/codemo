@@ -10,6 +10,7 @@
             <li class="hover:bg-purple-50 p-2 border-t-2 border-black">
                 <a class="" href="/articles/{{$article->id}}">
                     <h2 class="text-2xl font-bold">{{ $article->title }}</h2>
+                    <div>by <strong>{{$article->author->name}}</strong></div>
                     <p class="line-clamp-3">{{$article->content}}</p>
                 </a>
             </li>

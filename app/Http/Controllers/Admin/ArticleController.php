@@ -37,6 +37,8 @@ class ArticleController extends Controller
             'is_public' => 1,
         ]);
 
+        cache()->forget('latest_articles');
+
         return redirect('/admin/articles');
     }
 
@@ -68,6 +70,8 @@ class ArticleController extends Controller
             'title' => $request->title,
             'content' => $request->content,
         ]);
+
+        cache()->forget('latest_articles');
 
         return redirect('/admin/articles');
     }

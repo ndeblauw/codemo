@@ -9,7 +9,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = \App\Models\Article::all();
+        $articles = \App\Models\Article::orderBy('title')->paginate(10);
 
         return view('site.articles.index', ['articles' => $articles]);
     }

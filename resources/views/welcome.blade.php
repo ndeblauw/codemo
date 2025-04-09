@@ -14,7 +14,10 @@
         </ul>
 
         <div>
-            right column
+            <div class="bg-purple-50 rounded-lg p-4">
+                <div class="italic">{{$quote->quote}}</div>
+                <div class="text-sm mt-2">{{$quote->author}}</div>
+            </div>
         </div>
     </div>
 

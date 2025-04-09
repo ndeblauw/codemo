@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Action\QuoteService;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -12,6 +13,8 @@ class WelcomeController extends Controller
             return \App\Models\Article::latest()->take(5)->get();
         });
 
-        return view('welcome', compact('latest_articles'));
+        $quote = (new QuoteService())->getQuote();
+
+        return view('welcome', compact('latest_articles', 'quote'));
     }
 }

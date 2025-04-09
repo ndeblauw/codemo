@@ -12,6 +12,10 @@ class Article extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'sponsored' => 'boolean',
+    ];
+
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');

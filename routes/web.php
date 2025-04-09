@@ -8,6 +8,10 @@ Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('welcome')
 
 Route::get('/articles', [\App\Http\Controllers\ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/{id}', [\App\Http\Controllers\ArticleController::class, 'show'])->name('articles.show');
+Route::get('/articles/{article}/sponsor', [\App\Http\Controllers\PaymentController::class, 'preparePayment'])->name('articles.sponsor');
+
+Route::get('/order/success/{article}', [\App\Http\Controllers\PaymentController::class, 'success'])->name('order.success');
+
 
 Route::get('/authors', [\App\Http\Controllers\AuthorController::class, 'index']);
 Route::get('/authors/{id}', [\App\Http\Controllers\AuthorController::class, 'show']);

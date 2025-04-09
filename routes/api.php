@@ -14,5 +14,7 @@ Route::middleware(['auth:sanctum'])->group(function() {
     //Route::apiResource('articles', \App\Http\Controllers\Api\ArticleController::class)->except(['index', 'show']);
 });
 
+Route::post('/order/webhook', [\App\Http\Controllers\PaymentController::class, 'webhook'])->name('webhooks.mollie');
+
 Route::get('authors', [\App\Http\Controllers\Api\AuthorController::class, 'index']);
 Route::get('authors/{author}', [\App\Http\Controllers\Api\AuthorController::class, 'show'])->name('api.authors.show');

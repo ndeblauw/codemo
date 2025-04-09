@@ -2,6 +2,8 @@
 
 return [
 
+    'api_ninjas_key' => env('API_NINJAS_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

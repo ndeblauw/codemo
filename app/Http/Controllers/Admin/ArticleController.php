@@ -59,6 +59,7 @@ class ArticleController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'min:10', 'max:255'],
             'content' => ['required'],
+            'image' => ['nullable', 'file', 'image', 'max:4096'],
         ]);
 
         $article = Article::find($id);
@@ -71,6 +72,11 @@ class ArticleController extends Controller
             'title' => $request->title,
             'content' => $request->content,
         ]);
+
+        if($request->has('image')) {
+            $article->media->first()?->delete();
+            $article->addMediaFromRequest('image')->toMediaCollection('images');
+        }
 
         SlowArticleStuffToDo::dispatch($article);
 

@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('test-download', \App\Http\Controllers\DownloadTestController::class)->name('test.download');
+
 // Public pages of my application
 Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('welcome');
 

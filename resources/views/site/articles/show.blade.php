@@ -13,7 +13,7 @@
     <h2 class="text-xl mt-2">Written by <span class="font-semibold">{{$article->author->name}}</span></h2>
 
     @if($article->media->first() )
-        <img src="{{$article->media->first()->getUrl()}}" class="w-40 h-40 mt-4">
+        <img src="{{$article->media->first()->getUrl('main')}}" class="w-40 h-40 mt-4">
     @endif
 
     <p class="mt-4">

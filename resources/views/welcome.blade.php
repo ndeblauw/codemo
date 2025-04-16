@@ -7,7 +7,7 @@
                 <li class="hover:bg-purple-50 p-2 border-t-2 border-black">
                     <a class="flex justify-begin gap-x-8" href="/articles/{{$article->id}}">
                         @if($article->media->first() )
-                            <img class="w-24 h-24" src="{{$article->media->first()?->getUrl()}}">
+                            <img class="w-24 h-24" src="{{$article->media->first()?->getUrl('thumbnail')}}">
                         @endif
                         <div>
                             <h2 class="text-2xl font-bold">{{ $article->title }}</h2>

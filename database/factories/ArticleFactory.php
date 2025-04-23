@@ -18,7 +18,7 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => $this->faker->realTextBetween(20, 50, 1),
-            'content' => $this->faker->realTextBetween(500, 800, 2),
+            'content' => $this->faker->realTextBetween(1500, 2800, 2),
             'author_id' => $this->faker->numberBetween(1, 10),
             'is_public' => $this->faker->boolean(80),
         ];
